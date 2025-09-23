@@ -21,6 +21,8 @@ export const Home: React.FC = () => {
           setTimeout(() => {
             setAllowScroll(true);
             document.body.style.overflow = 'auto';
+            // Ensure we're still at the top after enabling scroll
+            window.scrollTo(0, 0);
           }, 1500);
         }, 500);
       }
