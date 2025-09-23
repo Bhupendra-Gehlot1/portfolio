@@ -9,21 +9,44 @@ function App() {
   const { navbar } = UI;
   
   useEffect(() => {
-    // Ensure scroll to top happens after DOM is ready and smooth scrolling is temporarily disabled
-    const scrollToTop = () => {
-      // Temporarily disable smooth scrolling
+    const forceScrollToTop = () => {
+      const originalScrollBehavior = document.documentElement.style.scrollBehavior;
       document.documentElement.style.scrollBehavior = 'auto';
-      window.scrollTo(0, 0);
-      // Re-enable smooth scrolling after a short delay
+      
+      window.scrollTo(0, 0);  
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      
       setTimeout(() => {
-        document.documentElement.style.scrollBehavior = 'smooth';
-      }, 100);
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 50);
+      
+      setTimeout(() => {
+        document.documentElement.style.scrollBehavior = originalScrollBehavior || 'smooth';
+      }, 200);
     };
 
-    // Use requestAnimationFrame to ensure this runs after initial render
+    forceScrollToTop();
+    
     requestAnimationFrame(() => {
-      requestAnimationFrame(scrollToTop);
+      requestAnimationFrame(forceScrollToTop);
     });
+    
+    const delayedScroll = setTimeout(forceScrollToTop, 500);
+    
+    const handleFocus = () => {
+      window.scrollTo(0, 0);
+    };
+    
+    window.addEventListener('focus', handleFocus);
+    
+    return () => {
+      clearTimeout(delayedScroll);
+      window.removeEventListener('focus', handleFocus);
+    };
   }, []);
   
   return (

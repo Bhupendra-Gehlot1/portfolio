@@ -8,7 +8,6 @@ export const Home: React.FC = () => {
   const [allowScroll, setAllowScroll] = useState(false);
 
   useEffect(() => {
-    // Disable scroll initially
     document.body.style.overflow = 'hidden';
     
     const timer = setTimeout(() => {
@@ -17,16 +16,14 @@ export const Home: React.FC = () => {
       } else if (!showJourney) {
         setTimeout(() => {
           setShowJourney(true);
-          // Allow scroll after journey section appears
           setTimeout(() => {
             setAllowScroll(true);
             document.body.style.overflow = 'auto';
-            // Ensure we're still at the top after enabling scroll
             window.scrollTo(0, 0);
-          }, 1500);
-        }, 500);
+          }, 600);
+        }, 200);
       }
-    }, 800);
+    }, 320);
 
     return () => clearTimeout(timer);
   }, [visibleLines, showJourney, home.greeting.length]);
@@ -50,7 +47,7 @@ export const Home: React.FC = () => {
                   ? 'text-5xl md:text-7xl lg:text-9xl text-gray-300 font-light tracking-tighter'
                   : 'text-3xl md:text-3xl lg:text-4xl text-gray-400 mb-2 tracking-tighter font-light'
               }`}
-              style={{ transitionDelay: `${index * 200}ms` }}
+              style={{ transitionDelay: `${index * 80}ms` }}
             >
               {line}
             </div>

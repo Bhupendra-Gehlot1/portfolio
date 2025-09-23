@@ -11,6 +11,34 @@
       rel="stylesheet"
     />
     <title>Bhupendra Gehlot</title>
+    <script>
+      // Disable browser scroll restoration
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      
+      // Force immediate scroll to top before any React code runs
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      
+      // Ensure scroll to top on page visibility change (handles tab switching)
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+          window.scrollTo(0, 0);
+        }
+      });
+      
+      // Ensure scroll to top before page unload
+      window.addEventListener('beforeunload', function() {
+        window.scrollTo(0, 0);
+      });
+      
+      // Additional scroll to top on page show (handles back/forward navigation)
+      window.addEventListener('pageshow', function() {
+        window.scrollTo(0, 0);
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
