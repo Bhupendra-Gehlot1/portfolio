@@ -39,14 +39,14 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ item, isVisible, isActive, 
       </div>
 
       {/* Content - Right side only */}
-      <div className="flex-1 pl-36">
+      <div className="flex-1 pl-30">
         <div className={`transition-all duration-700 delay-300 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <h3 className="text-lg md:text-xl font-bold text-gray-300 mb-3 leading-tight">
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight">
             {item.title}
           </h3>
-          <h4 className="text-3xl md:text-4xl text-white mb-6 font-medium">
+          <h4 className="text-xl md:text-2xl text-gray-300 mb-6 font-medium">
             {item.subtitle}
           </h4>
           <div className="text-lg md:text-xl text-gray-400 leading-relaxed whitespace-pre-line max-w-4xl">
@@ -76,7 +76,6 @@ export const Timeline: React.FC = () => {
       
       const newVisibleItems = new Set<number>();
       const newItemProgresses: number[] = [];
-      let totalProgress = 0;
 
       items.forEach((item, index) => {
         const rect = item.getBoundingClientRect();
@@ -103,13 +102,6 @@ export const Timeline: React.FC = () => {
         }
         
         newItemProgresses.push(itemProgress);
-        
-        // Update total line progress
-        if (index === 0) {
-          totalProgress = itemProgress;
-        } else if (newItemProgresses[index - 1] >= 100) {
-          totalProgress = Math.min(100, (index * 100 + itemProgress) / timeline.length);
-        }
       });
 
       // Calculate overall line height based on scroll through timeline
