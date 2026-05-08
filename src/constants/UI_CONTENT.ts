@@ -14,7 +14,7 @@ export const UI = {
     greeting: [
       "hey, i'm bhupendra",
       "i build products people rely on",
-      "a full-stack engineer",
+      "full-stack engineer",
       "from idea to production"
     ],
     journeyIntro: "journey so far",
