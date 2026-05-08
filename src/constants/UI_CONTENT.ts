@@ -72,7 +72,7 @@ export const UI = {
     },
 
     {
-      year: "now",
+      year: "26'",
       title: "what's next?",
       subtitle: "building bigger things",
       description:
