@@ -10,7 +10,7 @@ export const Navbar: React.FC<NavbarProps> = ({ template }) => {
 
   const handleResumeDownload = () => {
     window.open(
-      "https://drive.google.com/file/d/1pcqujspcTnn4wnAb_e5NgPoraZA7Po2A/view?usp=sharing",
+      "https://drive.google.com/file/d/1aQSlpACYNusfcLlkj4Qk2_s6RWyRZYEK/view?usp=sharing",
       "_blank"
     );
   };
