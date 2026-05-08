@@ -55,7 +55,7 @@ export const Home: React.FC = () => {
         </div>
 
         {/* Journey Section - Center */}
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center py-3">
           <div className={`text-center max-w-4xl transition-all duration-1000 ${
             showJourney ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
