@@ -44,7 +44,7 @@ export const Home: React.FC = () => {
                 index === 2 
                   ? 'text-4xl md:text-6xl lg:text-8xl font-bold text-white lg:-mb-4 md:-mb-3 -mb-2 leading-tight tracking-tighter'
                   : index === 3
-                  ? 'text-4xl md:text-7xl lg:text-9xl text-gray-300 font-light tracking-tighter'
+                  ? 'text-[30px] md:text-6xl lg:text-7xl text-gray-300 font-light tracking-tighter'
                   : 'text-3xl md:text-3xl lg:text-4xl text-gray-400 mb-2 tracking-tighter font-light'
               }`}
               style={{ transitionDelay: `${index * 80}ms` }}
